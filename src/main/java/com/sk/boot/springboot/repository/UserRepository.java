@@ -2,16 +2,20 @@ package com.sk.boot.springboot.repository;
 
 import com.sk.boot.springboot.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-
+/**
+ * jpa所需Dao,继承Repository
+ */
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByUserName(String userName);
+   // User findByUserName(String userName);
 
     User findByUserNameOrEmail(String username, String email);
 
     User findById(long id);
 
-    Long deleteById(Long id);
-
+    @Query(value = "select u from User u where u.userName = :userName")
+    public User findByUsername(@Param("userName") String username);
 }

@@ -38,7 +38,7 @@ public class UserRepositoryTests {
 
 		Assert.assertEquals(9, userRepository.findAll().size());
 		Assert.assertEquals("bb", userRepository.findByUserNameOrEmail("bb", "cc@126.com").getNickName());
-		userRepository.delete(userRepository.findByUserName("aa1"));
+		userRepository.delete(userRepository.findByUsername("aa1"));
 	}
 
 }
