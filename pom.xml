@@ -53,8 +53,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
-            <thymeleaf-layout-dialect.version>2.0.5</thymeleaf-layout-dialect.version>
         </dependency>
         <dependency>
             <groupId>org.webjars.bower</groupId>
