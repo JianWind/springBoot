@@ -1,10 +1,13 @@
 package com.sk.boot.springboot.service.impl;
 
+import com.github.pagehelper.Page;
 import com.sk.boot.springboot.entity.User;
+import com.github.pagehelper.PageHelper;
 import com.sk.boot.springboot.repository.UserRepository;
 import com.sk.boot.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 
@@ -14,37 +17,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Override
-    public List<User> getUserList() {
-        return userRepository.findAllOrderByAgeDesc();
-    }
 
     @Override
-    public User findUserById(long id) {
-        return userRepository.findById(id);
+    public Page<User> getUserPages(@ModelAttribute User user, Integer pageNum, Integer pageSize) {
+        Page<User> page = PageHelper.startPage(pageNum, pageSize);
+        List<User> list = userRepository.findAll();
+        return page;
     }
-
-    @Override
-    public void save(User user) {
-        userRepository.save(user);
-    }
-
-    @Override
-    public void edit(User user) {
-        userRepository.save(user);
-    }
-
-    @Override
-    public void delete(long id) {
-        userRepository.delete(id);
-    }
-
-    @Override
-    public User findUserByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }
-
-
 }
 
 
