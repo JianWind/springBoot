@@ -76,6 +76,5 @@ public class User implements Serializable {
 	public String getAge(){return  age;}
 	public void setAge(String age){this.age = age;}
 
-	//省略getter settet方法、构造方法
 
 }
